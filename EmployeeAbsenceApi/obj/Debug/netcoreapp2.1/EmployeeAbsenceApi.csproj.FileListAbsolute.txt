@@ -1,0 +1,14 @@
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\bin\Debug\netcoreapp2.1\EmployeeAbsenceApi.deps.json
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\bin\Debug\netcoreapp2.1\EmployeeAbsenceApi.runtimeconfig.json
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\bin\Debug\netcoreapp2.1\EmployeeAbsenceApi.runtimeconfig.dev.json
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\bin\Debug\netcoreapp2.1\EmployeeAbsenceApi.dll
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\bin\Debug\netcoreapp2.1\EmployeeAbsenceApi.pdb
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.csprojAssemblyReference.cache
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.csproj.CoreCompileInputs.cache
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.RazorAssemblyInfo.cache
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.RazorAssemblyInfo.cs
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.AssemblyInfoInputs.cache
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.AssemblyInfo.cs
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.RazorTargetAssemblyInfo.cache
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.dll
+D:\qitma\Belajar\Project\Absensi Karyawan\code\EmployeeAbsenceApi\obj\Debug\netcoreapp2.1\EmployeeAbsenceApi.pdb
