@@ -18,12 +18,12 @@ namespace EmployeeAttendanceApi.Utils
 
         }
 
-        public virtual double GetDatedDiffAsDays()
+        protected virtual double GetDatedDiffAsDays()
         {
             return (this.End - this.Start).TotalDays;
         }
 
-        public virtual double GetDatedDiffAsHours()
+        protected virtual double GetDatedDiffAsHours()
         {
             return (this.End - this.Start).TotalHours;
         }

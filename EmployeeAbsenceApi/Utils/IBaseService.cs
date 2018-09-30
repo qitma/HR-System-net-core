@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 namespace EmployeeAttendanceApi.Utils
 {
-    public interface IBaseFacade<TModel>{
+    public interface IBaseService<TModel>{
         ICollection<TModel> GetAll();
         TModel GetById(int id);
         int Create(TModel model);

@@ -1,5 +1,7 @@
 using EmployeeAttendanceApi.Utils;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeAttendanceApi.Models
 {
@@ -7,11 +9,6 @@ namespace EmployeeAttendanceApi.Models
     {
         public int TransportReimbursement {get;set;}
         public int MealReimbursement {get;set;}
-        public int TotalHours {
-            get
-            {
-                return (int)Math.Round(this.GetDatedDiffAsHours(),0,MidpointRounding.AwayFromZero);
-            }
-        }
+
     }
 }
