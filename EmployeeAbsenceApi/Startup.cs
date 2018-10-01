@@ -30,7 +30,7 @@ namespace EmployeeAttendanceApi
             string conn = Configuration.GetConnectionString("DefaultConnection");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<AttendanceContext>(opt =>
-                opt.UseSqlite(conn)
+                opt.UseSqlServer(conn)
             );
         }
 
