@@ -6,7 +6,7 @@ namespace EmployeeAttendanceApi.Utils
         IEnumerable<TModel> GetAll();
         TModel GetById(int id);
         int Create(TModel model);
-        int UpdateById(TModel model);
+        int Update(TModel model);
         int DeleteById(int id);
     }
 }

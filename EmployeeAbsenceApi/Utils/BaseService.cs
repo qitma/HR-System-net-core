@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EmployeeAttendanceApi.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeAttendanceApi.Utils
 {
     public abstract class BaseService<TModel> : IBaseService<TModel>, IDisposable
         where TModel : BaseModel
     {
+        private string _Actor{get;set;}
         public  AttendanceContext _dbContext {get; private set;}
-        public BaseService(AttendanceContext dbContext)
+        public BaseService(AttendanceContext dbContext, string actor)
         {
             _dbContext = dbContext;
+            _Actor = actor;
         }
 
         protected abstract IEnumerable<ValidationResult> Validate(TModel model);
@@ -30,7 +33,9 @@ namespace EmployeeAttendanceApi.Utils
               {
                   throw new ValidationException(errors,"Error Found");
               }
-              var _model = BeforeCreating(model);  
+              var _model = BeforeCreating(model);
+              _model.CreatedBy = _Actor ?? string.Empty;
+              _model.CreatedDate = DateTime.UtcNow;  
               _dbContext.Set<TModel>().Add(_model);
               return _dbContext.SaveChanges();
           }
@@ -49,10 +54,12 @@ namespace EmployeeAttendanceApi.Utils
         {
             try
             {
-                TModel model = GetById(id);
-                model = BeforeDelete(model);
-                model.IsDeleted = true;
-                _dbContext.Set<TModel>().Update(model);
+                TModel _model = GetById(id);
+                _model = BeforeDelete(_model);
+                _model.IsDeleted = true;
+                _model.UpdatedBy = _Actor ?? string.Empty;
+                _model.UpdatedDate = DateTime.UtcNow;
+                _dbContext.Set<TModel>().Update(_model);
                 
                 return _dbContext.SaveChanges();
             }
@@ -85,14 +92,33 @@ namespace EmployeeAttendanceApi.Utils
                 throw;
             }
         }
-
-        public int UpdateById(TModel model)
+        protected virtual TModel BeforeUpdate(TModel local, TModel db)
         {
-            throw new System.NotImplementedException();
+            return local;
+        }
+        public int Update(TModel model)
+        {
+            try
+            {
+                List<ValidationResult> errors = new List<ValidationResult>(Validate(model));
+
+                if(errors.Count > 0)
+                    throw new ValidationException(errors, "Error Found");
+
+                TModel _modelDB = GetById(model.Id);
+                var _modelUpdate = BeforeUpdate(model,_modelDB);
+                _dbContext.Entry(_modelUpdate).State = EntityState.Modified;
+
+                return _dbContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         
-        protected abstract TModel BeforeUpdate(TModel local, TModel db);
+        
 
         public void Dispose()
         {
