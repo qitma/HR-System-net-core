@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EmployeeAttendanceApi.Context;
 
 namespace EmployeeAttendanceApi.Utils
@@ -39,19 +40,50 @@ namespace EmployeeAttendanceApi.Utils
           }
         }
 
-        public int DeleteById(int id)
+        protected virtual TModel BeforeDelete(TModel model)
         {
-            throw new System.NotImplementedException();
+            return model;
         }
 
-        public ICollection<TModel> GetAll()
+        public int DeleteById(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                TModel model = GetById(id);
+                model = BeforeDelete(model);
+                model.IsDeleted = true;
+                _dbContext.Set<TModel>().Update(model);
+                
+                return _dbContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<TModel> GetAll()
+        {
+            try
+            {
+                return _dbContext.Set<TModel>().AsEnumerable();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public TModel GetById(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                return _dbContext.Set<TModel>().Find(id);
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public int UpdateById(TModel model)
@@ -60,28 +92,7 @@ namespace EmployeeAttendanceApi.Utils
         }
 
         
-
-        protected virtual TModel AfterCreating(TModel model)
-        {
-            return model;
-        }
-
         protected abstract TModel BeforeUpdate(TModel local, TModel db);
-
-        protected virtual TModel AfterUpdate(TModel model)
-        {
-            return model;
-        }
-
-        protected virtual TModel BeforeDelete(TModel model)
-        {
-            return model;
-        }
-
-        protected virtual TModel AfterDelete(TModel model)
-        {
-            return model;
-        }
 
         public void Dispose()
         {
@@ -91,8 +102,5 @@ namespace EmployeeAttendanceApi.Utils
                 this._dbContext = null;
             }
         }
-
-
-        
     }
 }

@@ -8,10 +8,6 @@ namespace EmployeeAttendanceApi.Models
 {
     public class User : BaseModel
     {
-        public User()
-        {
-        }
-
         public string Code {get;set;}
         public string Name {get;set;}
         public string FullName {get;set;}
