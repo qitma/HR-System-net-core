@@ -4,7 +4,7 @@ namespace EmployeeAttendanceApi.Constant
         public const int HALF_DAY_THRESHOLD = 4;
     }
 
-    public static class AttendanceConstant
+    public static class  AttendanceConstant
     {
         public const string TimeIn = "TimeIn";
         public const string TimeOut = "TimeOut";
