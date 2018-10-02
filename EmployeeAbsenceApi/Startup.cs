@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using EmployeeAttendanceApi.Context;
+using EmployeeAttendanceApi.Interfaces;
+using EmployeeAttendanceApi.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeAttendanceApi
@@ -32,6 +34,7 @@ namespace EmployeeAttendanceApi
             services.AddDbContext<AttendanceContext>(opt =>
                 opt.UseSqlServer(conn)
             );
+            services.AddTransient<IAttendanceService,AttendanceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

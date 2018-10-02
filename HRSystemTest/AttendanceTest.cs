@@ -3,7 +3,7 @@ using Xunit;
 
 namespace HRSystemTest
 {
-    public class UnitTest1
+    public class AttendanceTest
     {
         [Fact]
         public void Test1()

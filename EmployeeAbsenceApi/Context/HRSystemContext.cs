@@ -3,9 +3,9 @@ using EmployeeAttendanceApi.Models;
 
 namespace EmployeeAttendanceApi.Context
 {
-    public class AttendanceContext : DbContext
+    public class HRSystemContext : DbContext
     {
-        public AttendanceContext(DbContextOptions<AttendanceContext> options):base(options)
+        public HRSystemContext(DbContextOptions<HRSystemContext> options):base(options)
         {
 
         }

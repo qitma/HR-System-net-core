@@ -2,15 +2,16 @@ using EmployeeAttendanceApi.Utils;
 using EmployeeAttendanceApi.Models;
 using EmployeeAttendanceApi.Context;
 using EmployeeAttendanceApi.Constant;
+using EmployeeAttendanceApi.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
 namespace EmployeeAttendanceApi.Service
 {
-    public class AttendanceService : BaseService<Attendance>
+    public class AttendanceService : BaseService<Attendance>,IAttendanceService
     {
-        public AttendanceService(AttendanceContext dbContext, string actor) : base(dbContext,actor)
+        public AttendanceService(HRSystemContext dbContext, string actor) : base(dbContext,actor)
         {
         }
 
@@ -77,18 +78,12 @@ namespace EmployeeAttendanceApi.Service
 
         public void AttendanceOut(string userId)
         {
-            var _exist = GetCurrentAttendanceByUserId(userId);
-            if(_exist != null)
+            var _existAttendance = GetCurrentAttendanceByUserId(userId);
+            if(_existAttendance != null)
             {
-                User _user = GetUserByCode(userId);
-                Attendance _attendance = new Attendance()
-                {
-                    Name = _user.Name,
-                    TimeOut = DateTime.UtcNow,
-                    Status = AttendanceConstant.TimeIn
-                };
-
-                base.Create(_attendance);
+                _existAttendance.TimeOut = DateTime.UtcNow;
+                _existAttendance.Status = AttendanceConstant.TimeOut;
+                base.Update(_existAttendance);
             }
         }
     }

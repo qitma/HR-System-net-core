@@ -10,8 +10,8 @@ namespace EmployeeAttendanceApi.Utils
         where TModel : BaseModel
     {
         private string _Actor{get;set;}
-        public  AttendanceContext _dbContext {get; private set;}
-        public BaseService(AttendanceContext dbContext, string actor)
+        public  HRSystemContext _dbContext {get; private set;}
+        public BaseService(HRSystemContext dbContext, string actor)
         {
             _dbContext = dbContext;
             _Actor = actor;

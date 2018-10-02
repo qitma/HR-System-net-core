@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeAbsenceApi.Migrations
 {
-    [DbContext(typeof(AttendanceContext))]
+    [DbContext(typeof(HRSystemContext))]
     partial class AttendanceContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
