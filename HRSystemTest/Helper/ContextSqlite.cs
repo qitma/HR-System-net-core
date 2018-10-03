@@ -34,7 +34,11 @@ namespace HRSystemTest.Helper
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if(_connection != null)
+            {
+                _connection.Dispose();
+                _connection = null;
+            }
         }
     }
 }

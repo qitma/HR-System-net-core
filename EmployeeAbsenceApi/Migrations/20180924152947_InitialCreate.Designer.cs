@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeAbsenceApi.Migrations
 {
-    [DbContext(typeof(AttendanceContext))]
+    [DbContext(typeof(HRSystemContext))]
     [Migration("20180924152947_InitialCreate")]
     partial class InitialCreate
     {

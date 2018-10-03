@@ -9,33 +9,33 @@ using System;
 
 namespace EmployeeAttendanceApi.Service
 {
-    public class AttendanceService : BaseService<Attendance>,IAttendanceService
+    public class AttendanceService : BaseService<Attendance>, IAttendanceService
     {
-        public AttendanceService(HRSystemContext dbContext, string actor) : base(dbContext,actor)
+        public AttendanceService(HRSystemContext dbContext, string actor) : base(dbContext, actor)
         {
         }
 
         protected override Attendance BeforeUpdate(Attendance local, Attendance db)
         {
             db.Name += string.Empty;
-            
+
             return db;
         }
 
         protected override IEnumerable<ValidationResult> Validate(Attendance model)
         {
-            if(string.IsNullOrEmpty(model.Name))
+            if (string.IsNullOrEmpty(model.Name))
             {
                 yield return new ValidationResult()
-                    {
-                        Errors = new Dictionary<string, string>
+                {
+                    Errors = new Dictionary<string, string>
                             {
                                 {"Name","Name must not  be empty"}
                             }
-                    };
+                };
             }
 
-            if(model.TimeOut.HasValue && model.TimeOut < model.TimeIn)
+            if (model.TimeOut.HasValue && model.TimeOut < model.TimeIn)
             {
                 yield return new ValidationResult()
                 {
@@ -51,40 +51,62 @@ namespace EmployeeAttendanceApi.Service
         {
             DateTime today = DateTime.UtcNow.Date;
             return base._dbContext.Set<Attendance>()
-                .FirstOrDefault(x=> x.UserCode == userId && x.TimeIn.Date == today);
+                .FirstOrDefault(x => x.UserCode == userId && x.TimeIn.Date == today);
         }
 
         private User GetUserByCode(string code)
         {
-            return base._dbContext.Set<User>().FirstOrDefault(x=> x.Code == code);
+            return base._dbContext.Set<User>().FirstOrDefault(x => x.Code == code);
         }
 
-        public void AttendanceIn(string userId)
+        public void AttendanceIn(DateTime timeIn, string userCode)
         {
-            var _exist = GetCurrentAttendanceByUserId(userId);
-            if(_exist == null)
+            try
             {
-                User _user = GetUserByCode(userId);
-                Attendance _attendance = new Attendance()
+                var _exist = GetCurrentAttendanceByUserId(userCode);
+                if (_exist == null)
                 {
-                    Name = _user.Name,
-                    TimeIn = DateTime.UtcNow,
-                    Status = AttendanceConstant.TimeIn
-                };
+                    User _user = GetUserByCode(userCode);
+                    if (_user == null)
+                        throw new Exception("User is null");
+                    Attendance _attendance = new Attendance()
+                    {
+                        Name = _user.Name,
+                        TimeIn = timeIn,
+                        Status = AttendanceConstant.TimeIn,
+                        UserCode = userCode,
 
-                base.Create(_attendance);
+                    };
+
+                    base.Create(_attendance);
+                }
             }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
         }
 
-        public void AttendanceOut(string userId)
+        public void AttendanceOut(DateTime timeOut, string userCode)
         {
-            var _existAttendance = GetCurrentAttendanceByUserId(userId);
-            if(_existAttendance != null)
+            try
             {
-                _existAttendance.TimeOut = DateTime.UtcNow;
+                var _existAttendance = GetCurrentAttendanceByUserId(userCode);
+                if (_existAttendance == null)
+                {
+                    throw new Exception("Attendance not exist!");
+                }
+                _existAttendance.TimeOut = timeOut;
                 _existAttendance.Status = AttendanceConstant.TimeOut;
                 base.Update(_existAttendance);
             }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

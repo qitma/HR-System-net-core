@@ -34,12 +34,13 @@ namespace EmployeeAttendanceApi.Utils
                   throw new ValidationException(errors,"Error Found");
               }
               var _model = BeforeCreating(model);
+                
               _model.CreatedBy = _Actor ?? string.Empty;
               _model.CreatedDate = DateTime.UtcNow;  
               _dbContext.Set<TModel>().Add(_model);
               return _dbContext.SaveChanges();
           }
-          catch(Exception ex)
+          catch(Exception)
           {
               throw;
           }
@@ -63,7 +64,7 @@ namespace EmployeeAttendanceApi.Utils
                 
                 return _dbContext.SaveChanges();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw;
             }
@@ -75,7 +76,7 @@ namespace EmployeeAttendanceApi.Utils
             {
                 return _dbContext.Set<TModel>().AsEnumerable();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw;
             }
@@ -87,7 +88,7 @@ namespace EmployeeAttendanceApi.Utils
             {
                 return _dbContext.Set<TModel>().Find(id);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw;
             }
@@ -111,15 +112,11 @@ namespace EmployeeAttendanceApi.Utils
 
                 return _dbContext.SaveChanges();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw;
             }
         }
-
-        
-        
-
         public void Dispose()
         {
             if(this._dbContext != null)

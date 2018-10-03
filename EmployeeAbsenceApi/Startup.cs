@@ -31,7 +31,7 @@ namespace EmployeeAttendanceApi
         {
             string conn = Configuration.GetConnectionString("DefaultConnection");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<AttendanceContext>(opt =>
+            services.AddDbContext<HRSystemContext>(opt =>
                 opt.UseSqlServer(conn)
             );
             services.AddTransient<IAttendanceService,AttendanceService>();
