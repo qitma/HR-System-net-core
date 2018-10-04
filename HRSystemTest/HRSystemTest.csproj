@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeAbsenceApi\EmployeeAbsenceApi.csproj" />
+    <ProjectReference Include="..\EmployeeAbsenceApi\HRSystemApi.csproj" />
   </ItemGroup>
 
 </Project>

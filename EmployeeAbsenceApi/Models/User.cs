@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EmployeeAttendanceApi.Utils;
+using HRSystemApi.Utils;
 
-namespace EmployeeAttendanceApi.Models
+namespace HRSystemApi.Models
 {
     public class User : BaseModel
     {

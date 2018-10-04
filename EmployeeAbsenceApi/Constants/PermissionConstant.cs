@@ -1,4 +1,4 @@
-namespace EmployeeAttendanceApi.Constant
+namespace HRSystemApi.Constants
 {
     public static class PermissionConstant{
         public const int HALF_DAY_THRESHOLD = 4;

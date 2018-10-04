@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EmployeeAttendanceApi.Utils
+namespace HRSystemApi.Utils
 {
     public class ValidationResult
     {

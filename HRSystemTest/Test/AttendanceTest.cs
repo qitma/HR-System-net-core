@@ -2,11 +2,11 @@ using System;
 using Xunit;
 using HRSystemTest.DataUtil;
 using HRSystemTest.Helper;
-using EmployeeAttendanceApi.Context;
-using EmployeeAttendanceApi.Models;
-using EmployeeAttendanceApi.Interfaces;
-using EmployeeAttendanceApi.Service;
-using EmployeeAttendanceApi.Constant;
+using HRSystemApi.Context;
+using HRSystemApi.Models;
+using HRSystemApi.Interfaces;
+using HRSystemApi.Services;
+using HRSystemApi.Constants;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -60,7 +60,7 @@ namespace HRSystemTest.Test
             context.SaveChanges();
 
             DateTime timeIn = DateTime.UtcNow;
-            ats.AttendanceIn(timeIn,user.Code);
+            ats.Attendance(timeIn,user.Code);
             
             Attendance currentAtt = context.Set<Attendance>().FirstOrDefault(x => x.UserCode == user.Code);
             
@@ -84,8 +84,8 @@ namespace HRSystemTest.Test
 
             DateTime timeIn = DateTime.UtcNow;
             DateTime timeOut = timeIn.AddHours(8);
-            ats.AttendanceIn(timeIn,user.Code);
-            ats.AttendanceOut(timeOut,user.Code);
+            ats.Attendance(timeIn,user.Code);
+            ats.Attendance(timeOut,user.Code);
             
             Attendance currentAtt = context.Set<Attendance>().FirstOrDefault(x => x.UserCode == user.Code);
             

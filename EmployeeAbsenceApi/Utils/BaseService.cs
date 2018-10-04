@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using EmployeeAttendanceApi.Context;
+using HRSystemApi.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeAttendanceApi.Utils
+namespace HRSystemApi.Utils
 {
     public abstract class BaseService<TModel> : IBaseService<TModel>, IDisposable
         where TModel : BaseModel

@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EmployeeAttendanceApi.Utils;
-using EmployeeAttendanceApi.AbsenceEnum;
+using HRSystemApi.Utils;
 
-namespace EmployeeAttendanceApi.Models
+namespace HRSystemApi.Models
 {
     public class Attendance : BaseModel
     {

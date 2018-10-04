@@ -1,6 +1,6 @@
 using System;
 
-namespace EmployeeAttendanceApi.Utils
+namespace HRSystemApi.Utils
 {
     public interface IAuditAble
     {

@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EmployeeAttendanceApi.Utils
+namespace HRSystemApi.Utils
 {
     public abstract class BaseModel: IAuditAble{
         [Key]

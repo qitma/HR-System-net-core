@@ -1,9 +1,9 @@
-using EmployeeAttendanceApi.Utils;
+using HRSystemApi.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace EmployeeAttendanceApi.Models
+namespace HRSystemApi.Models
 {
     public class OverTimePermission:BasePermission
     {

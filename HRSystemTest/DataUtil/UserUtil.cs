@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using EmployeeAttendanceApi.Models;
+using HRSystemApi.Models;
 
 namespace HRSystemTest.DataUtil
 {

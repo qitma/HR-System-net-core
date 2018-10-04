@@ -10,12 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using EmployeeAttendanceApi.Context;
-using EmployeeAttendanceApi.Interfaces;
-using EmployeeAttendanceApi.Service;
 using Microsoft.EntityFrameworkCore;
+using HRSystemApi.Context;
+using HRSystemApi.Interfaces;
+using HRSystemApi.Services;
 
-namespace EmployeeAttendanceApi
+namespace HRSystem
 {
     public class Startup
     {

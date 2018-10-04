@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EmployeeAttendanceApi.AbsenceEnum
+namespace HRSystemeEnum
 {
     [Flags]public enum AttendanceType
     {

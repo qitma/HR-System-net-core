@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeAttendanceApi.Controllers
+namespace HRSystemllers
 {
     [Route("api/[controller]")]
     [ApiController]

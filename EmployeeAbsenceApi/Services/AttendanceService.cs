@@ -1,13 +1,13 @@
-using EmployeeAttendanceApi.Utils;
-using EmployeeAttendanceApi.Models;
-using EmployeeAttendanceApi.Context;
-using EmployeeAttendanceApi.Constant;
-using EmployeeAttendanceApi.Interfaces;
+using HRSystemApi.Utils;
+using HRSystemApi.Models;
+using HRSystemApi.Context;
+using HRSystemApi.Constants;
+using HRSystemApi.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace EmployeeAttendanceApi.Service
+namespace HRSystemApi.Services
 {
     public class AttendanceService : BaseService<Attendance>, IAttendanceService
     {
@@ -59,27 +59,20 @@ namespace EmployeeAttendanceApi.Service
             return base._dbContext.Set<User>().FirstOrDefault(x => x.Code == code);
         }
 
-        public void AttendanceIn(DateTime timeIn, string userCode)
+        private void AttendanceIn(DateTime timeIn, User user)
         {
             try
             {
-                var _exist = GetCurrentAttendanceByUserId(userCode);
-                if (_exist == null)
+                Attendance _attendance = new Attendance()
                 {
-                    User _user = GetUserByCode(userCode);
-                    if (_user == null)
-                        throw new Exception("User is null");
-                    Attendance _attendance = new Attendance()
-                    {
-                        Name = _user.Name,
-                        TimeIn = timeIn,
-                        Status = AttendanceConstant.TimeIn,
-                        UserCode = userCode,
+                    Name = user.Name,
+                    TimeIn = timeIn,
+                    Status = AttendanceConstant.TimeIn,
+                    UserCode = user.Code,
 
-                    };
+                };
+                base.Create(_attendance);
 
-                    base.Create(_attendance);
-                }
             }
             catch (Exception)
             {
@@ -89,24 +82,42 @@ namespace EmployeeAttendanceApi.Service
 
         }
 
-        public void AttendanceOut(DateTime timeOut, string userCode)
+        private void AttendanceOut(DateTime timeOut, Attendance attendance)
         {
             try
             {
-                var _existAttendance = GetCurrentAttendanceByUserId(userCode);
-                if (_existAttendance == null)
-                {
-                    throw new Exception("Attendance not exist!");
-                }
-                _existAttendance.TimeOut = timeOut;
-                _existAttendance.Status = AttendanceConstant.TimeOut;
-                base.Update(_existAttendance);
+                attendance.TimeOut = timeOut;
+                attendance.Status = AttendanceConstant.TimeOut;
+                base.Update(attendance);
             }
             catch (Exception)
             {
                 throw;
             }
 
+        }
+
+        public void Attendance(DateTime timeAttend, string userCode)
+        {
+            try
+            {
+                Attendance _exist = GetCurrentAttendanceByUserId(userCode);
+                if (_exist == null)
+                {
+                    User _user = GetUserByCode(userCode);
+                    if (_user == null)
+                        throw new Exception("User is null");
+                    AttendanceIn(timeAttend, _user);
+                }
+                else
+                {
+                    AttendanceOut(timeAttend,_exist);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

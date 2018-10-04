@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using EmployeeAttendanceApi.Models;
+using HRSystemApi.Models;
 
-namespace EmployeeAttendanceApi.Context
+namespace HRSystemApi.Context
 {
     public class HRSystemContext : DbContext
     {

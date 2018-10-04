@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace EmployeeAttendanceApi.Utils
+namespace HRSystemApi.Utils
 {
     public interface IBaseService<TModel>{
         IEnumerable<TModel> GetAll();

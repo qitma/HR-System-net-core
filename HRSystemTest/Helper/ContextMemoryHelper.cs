@@ -1,4 +1,4 @@
-using EmployeeAttendanceApi.Context;
+using HRSystemApi.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
 

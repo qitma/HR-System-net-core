@@ -1,4 +1,4 @@
-namespace EmployeeAttendanceApi.Models
+namespace HRSystemApi.Models
 {
     public class UserRole{
         public int UserId {get;set;}
