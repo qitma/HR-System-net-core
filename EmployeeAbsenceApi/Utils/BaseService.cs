@@ -97,7 +97,7 @@ namespace HRSystemApi.Utils
         {
             return local;
         }
-        public int Update(TModel model)
+        public TModel Update(TModel model)
         {
             try
             {
@@ -110,7 +110,8 @@ namespace HRSystemApi.Utils
                 var _modelUpdate = BeforeUpdate(model,_modelDB);
                 _dbContext.Entry(_modelUpdate).State = EntityState.Modified;
 
-                return _dbContext.SaveChanges();
+                _dbContext.SaveChanges();
+                return _modelUpdate;
             }
             catch(Exception)
             {

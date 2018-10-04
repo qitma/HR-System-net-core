@@ -7,6 +7,6 @@ namespace HRSystemApi.Utils
         TModel GetById(int id);
         int Create(TModel model);
         int DeleteById(int id);
-        int Update(TModel model);
+        TModel Update(TModel model);
     }
 }
