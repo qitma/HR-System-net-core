@@ -1,10 +1,9 @@
-using HRSystemApi.Utils;
-using HRSystemApi.Constants;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using HRSystemApi.Utils;
 
-namespace HRSystemApi.Models
+namespace HRSystem
 {
     public class AnnualLeavePermission:BasePermission
     {
